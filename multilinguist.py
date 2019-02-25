@@ -93,13 +93,35 @@ class MathGenius(Multilinguist):
         return self.say_in_local_language('The total is {}'.format(total))
 
 
+class QuoteCollector(Multilinguist):
+    """ Keeps a collection of quotes and translates in local language"""
 
+    def __init__(self):
+        super().__init__()
+        self.quotes = []
+
+    def add_quote(self, new_quote):
+        self.quotes.append(new_quote)
+
+    def share_random_quote(self):
+        random_quote = random.choice(self.quotes)
+        return self.say_in_local_language('{}'.format(random_quote))
 
 #--------------------------------------------------------------------------
 #Testing MathGenius
-me = MathGenius()
-print(me.report_total([23,45,676,34,5778,4,23,5465]))
-me.travel_to("India")
-print(me.report_total([23,45,676,34,5778,4,23,5465]))
-me.travel_to("Italy")
-print(me.report_total([23,45,676,34,5778,4,23,5465]))
+# me = MathGenius()
+# print(me.report_total([23,45,676,34,5778,4,23,5465]))
+# me.travel_to("India")
+# print(me.report_total([23,45,676,34,5778,4,23,5465]))
+# me.travel_to("Italy")
+# print(me.report_total([23,45,676,34,5778,4,23,5465]))
+
+#--------------------------------------------------------------------------
+#Testing QuoteCollector
+# fav_quotes = QuoteCollector()
+# fav_quotes.add_quote("One man’s crappy software is another man’s full time job")
+# fav_quotes.add_quote("There are two ways to write error-free programs; only the third one works")
+# fav_quotes.add_quote("Programming is like sex. One mistake and you have to support it for the rest of your life")
+# print(fav_quotes.share_random_quote())
+# fav_quotes.travel_to("Italy")
+# print(fav_quotes.share_random_quote())
